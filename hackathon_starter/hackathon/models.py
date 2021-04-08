@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 # Create your models here.
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
 
     # Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):
         return self.user.username
 
 class Profile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     oauth_token = models.CharField(max_length=200)
     oauth_secret = models.CharField(max_length=200)
 
@@ -19,7 +19,7 @@ class Profile(models.Model):
         return unicode(self.user)
 
 class GithubProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     github_user = models.CharField(max_length=200)
     access_token = models.CharField(max_length=200)
     scopes = models.CharField(max_length=200)
@@ -28,7 +28,7 @@ class GithubProfile(models.Model):
         return unicode(self.user)
 
 class TumblrProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     tumblr_user = models.CharField(max_length=200)
     access_token = models.CharField(max_length=200)
     access_token_secret = models.CharField(max_length=200)
@@ -37,7 +37,7 @@ class TumblrProfile(models.Model):
         return unicode(self.user)
 
 class InstagramProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     instagram_user = models.CharField(max_length=200)
     access_token = models.CharField(max_length=200)
 
@@ -45,7 +45,7 @@ class InstagramProfile(models.Model):
         return unicode(self.user)
 
 class TwitterProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     twitter_user = models.CharField(max_length=200)
     oauth_token = models.CharField(max_length=200)
     oauth_token_secret = models.CharField(max_length=200)
@@ -54,7 +54,7 @@ class TwitterProfile(models.Model):
         return unicode(self.user)
 
 class LinkedinProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     linkedin_user = models.CharField(max_length=200)
     access_token = models.CharField(max_length=200)
 
@@ -78,28 +78,28 @@ class MeetupToken(models.Model):
         return unicode(self.access_token)
 
 class FacebookProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     fb_user_id = models.CharField(max_length=100)
     time_created = models.DateTimeField(auto_now_add=True)
     profile_url = models.CharField(max_length=50)
     access_token = models.CharField(max_length=100)
 
 class GoogleProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     google_user_id = models.CharField(max_length=100)
     time_created = models.DateTimeField(auto_now_add=True)
     access_token = models.CharField(max_length=100)
     profile_url = models.CharField(max_length=100)
 
 class DropboxProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     dropbox_user_id = models.CharField(max_length=100)
     time_created = models.DateTimeField(auto_now_add=True)
     access_token = models.CharField(max_length=100)
 
 
 class FoursquareProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     foursquare_id = models.CharField(max_length=100)
     time_created = models.DateTimeField(auto_now_add=True)
     access_token = models.CharField(max_length=100)
